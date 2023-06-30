@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Left Panel Example</title>
+  <style>
+    /* CSS for left panel */
+    #left-panel {
+      width: 200px;
+      height: 100%;
+      background-color: #f1f1f1;
+      float: left;
+    }
+
+    #left-panel ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #left-panel li {
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #left-panel li:hover {
+      background-color: #ddd;
+    }
+
+    /* CSS for content area */
+    #content {
+      margin-left: 200px;
+      padding: 20px;
+      transition: opacity 0.3s;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+      #left-panel, #content {
+        float: none;
+        margin: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="left-panel">
+    <ul>
+      <li onclick="showContent('home')">Home</li>
+      <li onclick="showContent('contact')">Contact</li>
+      <li onclick="showContent('information')">Information</li>
+      <li onclick="showContent('guide')">Guide</li>
+    </ul>
+  </div>
+
+  <div id="content">
+    <h1>Welcome to the Left Panel Example</h1>
+    <p>This is the default content.</p>
+  </div>
+
+  <script>
+    function showContent(contentType) {
+      var contentDiv = document.getElementById("content");
+      contentDiv.style.opacity = 0;
+      setTimeout(function() {
+        switch (contentType) {
+          case 'home':
+            contentDiv.innerHTML = "<h1>Home</h1><p>Home content goes here.</p>";
+            break;
+          case 'contact':
+            contentDiv.innerHTML = "<h1>Contact</h1><p>Contact information goes here.</p>";
+            break;
+          case 'information':
+            contentDiv.innerHTML = "<h1>Information</h1><p>Information content goes here.</p>";
+            break;
+          case 'guide':
+            contentDiv.innerHTML = "<h1>Guide</h1><p>Guide content goes here.</p>";
+            break;
+          default:
+            contentDiv.innerHTML = "<h1>Error</h1><p>Invalid content type.</p>";
+        }
+        contentDiv.style.opacity = 1;
+      }, 300);
+    }
+  </script>
+</body>
+</html>
+
